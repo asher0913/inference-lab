@@ -1,13 +1,29 @@
-name: ci
-on: [push, pull_request]
+name: CI
+
+on:
+  push:
+  pull_request:
+
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.12", "3.13"]
     steps:
       - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v5
+      - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
-      - run: uv sync --extra dev
-      - run: uv run ruff check .
-      - run: uv run pytest
+          python-version: ${{ matrix.python-version }}
+      - run: python -m pip install -e '.[dev]'
+      - run: ruff check src tests scripts
+      - run: ruff format --check src tests scripts
+      - run: pytest -q
+      - name: Report reproduces the committed results
+        run: |
+          inference-lab report --out /tmp/results > /dev/null
+          for f in batching cache_lexical loadtest; do
+            python -c "import json; assert json.load(open('/tmp/results/$f.json')) == json.load(open('results/$f.json')), '$f'"
+          done
+          python -c "import json; m = json.load(open('results/cache_minilm.json'))['configs']; l = json.load(open('/tmp/results/cache_lexical.json'))['configs']; assert all(m[k] == l[k] for k in l), 'lexical rows of cache_minilm.json are stale'"
+          echo reproduced

@@ -23,7 +23,7 @@ def create_app(service: InferenceService | None = None) -> FastAPI:
         yield
         await service.close()
 
-    app = FastAPI(title="InferenceLab", version="0.1.0", lifespan=lifespan)
+    app = FastAPI(title="InferenceLab", version="1.0.0", lifespan=lifespan)
 
     @app.post("/v1/generate")
     async def generate(body: GenerateBody) -> dict[str, object]:
@@ -34,4 +34,3 @@ def create_app(service: InferenceService | None = None) -> FastAPI:
 
 
 app = create_app()
-

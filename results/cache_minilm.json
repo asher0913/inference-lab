@@ -1,0 +1,2372 @@
+{
+  "cached_prompts": 37,
+  "queries": 267,
+  "answerable_queries": 111,
+  "configs": {
+    "unigrams (default)": {
+      "per_family_thresholds": {
+        "thresholds": {},
+        "exact_match_only": [
+          "unit conversion",
+          "translation",
+          "code",
+          "facts",
+          "negation"
+        ],
+        "hit_rate_pct": 0.0,
+        "wrong": 0
+      },
+      "at_default_threshold_0.96": {
+        "threshold": 0.96,
+        "hits": 0,
+        "hit_rate_pct": 0.0,
+        "wrong": 5
+      },
+      "best_with_no_wrong_answers": null,
+      "per_family": {
+        "unit conversion": {
+          "at_0.96": {
+            "threshold": 0.96,
+            "hits": 0,
+            "hit_rate_pct": 0.0,
+            "wrong": 5
+          },
+          "best_with_no_wrong_answers": null
+        },
+        "translation": {
+          "at_0.96": {
+            "threshold": 0.96,
+            "hits": 0,
+            "hit_rate_pct": 0.0,
+            "wrong": 0
+          },
+          "best_with_no_wrong_answers": {
+            "threshold": 0.88,
+            "hits": 0,
+            "hit_rate_pct": 0.0,
+            "wrong": 0
+          }
+        },
+        "code": {
+          "at_0.96": {
+            "threshold": 0.96,
+            "hits": 0,
+            "hit_rate_pct": 0.0,
+            "wrong": 0
+          },
+          "best_with_no_wrong_answers": {
+            "threshold": 0.93,
+            "hits": 0,
+            "hit_rate_pct": 0.0,
+            "wrong": 0
+          }
+        },
+        "facts": {
+          "at_0.96": {
+            "threshold": 0.96,
+            "hits": 0,
+            "hit_rate_pct": 0.0,
+            "wrong": 0
+          },
+          "best_with_no_wrong_answers": {
+            "threshold": 0.88,
+            "hits": 0,
+            "hit_rate_pct": 0.0,
+            "wrong": 0
+          }
+        },
+        "negation": {
+          "at_0.96": {
+            "threshold": 0.96,
+            "hits": 0,
+            "hit_rate_pct": 0.0,
+            "wrong": 0
+          },
+          "best_with_no_wrong_answers": {
+            "threshold": 0.94,
+            "hits": 0,
+            "hit_rate_pct": 0.0,
+            "wrong": 0
+          }
+        }
+      },
+      "curve": [
+        {
+          "threshold": 0.5,
+          "hits": 97,
+          "hit_rate_pct": 87.4,
+          "wrong": 129
+        },
+        {
+          "threshold": 0.51,
+          "hits": 97,
+          "hit_rate_pct": 87.4,
+          "wrong": 126
+        },
+        {
+          "threshold": 0.52,
+          "hits": 97,
+          "hit_rate_pct": 87.4,
+          "wrong": 126
+        },
+        {
+          "threshold": 0.53,
+          "hits": 97,
+          "hit_rate_pct": 87.4,
+          "wrong": 126
+        },
+        {
+          "threshold": 0.54,
+          "hits": 96,
+          "hit_rate_pct": 86.5,
+          "wrong": 123
+        },
+        {
+          "threshold": 0.55,
+          "hits": 89,
+          "hit_rate_pct": 80.2,
+          "wrong": 103
+        },
+        {
+          "threshold": 0.56,
+          "hits": 89,
+          "hit_rate_pct": 80.2,
+          "wrong": 103
+        },
+        {
+          "threshold": 0.57,
+          "hits": 89,
+          "hit_rate_pct": 80.2,
+          "wrong": 100
+        },
+        {
+          "threshold": 0.58,
+          "hits": 89,
+          "hit_rate_pct": 80.2,
+          "wrong": 93
+        },
+        {
+          "threshold": 0.59,
+          "hits": 89,
+          "hit_rate_pct": 80.2,
+          "wrong": 91
+        },
+        {
+          "threshold": 0.6,
+          "hits": 89,
+          "hit_rate_pct": 80.2,
+          "wrong": 91
+        },
+        {
+          "threshold": 0.61,
+          "hits": 87,
+          "hit_rate_pct": 78.4,
+          "wrong": 89
+        },
+        {
+          "threshold": 0.62,
+          "hits": 87,
+          "hit_rate_pct": 78.4,
+          "wrong": 85
+        },
+        {
+          "threshold": 0.63,
+          "hits": 87,
+          "hit_rate_pct": 78.4,
+          "wrong": 80
+        },
+        {
+          "threshold": 0.64,
+          "hits": 79,
+          "hit_rate_pct": 71.2,
+          "wrong": 76
+        },
+        {
+          "threshold": 0.65,
+          "hits": 79,
+          "hit_rate_pct": 71.2,
+          "wrong": 76
+        },
+        {
+          "threshold": 0.66,
+          "hits": 78,
+          "hit_rate_pct": 70.3,
+          "wrong": 76
+        },
+        {
+          "threshold": 0.67,
+          "hits": 72,
+          "hit_rate_pct": 64.9,
+          "wrong": 76
+        },
+        {
+          "threshold": 0.68,
+          "hits": 60,
+          "hit_rate_pct": 54.1,
+          "wrong": 67
+        },
+        {
+          "threshold": 0.69,
+          "hits": 60,
+          "hit_rate_pct": 54.1,
+          "wrong": 67
+        },
+        {
+          "threshold": 0.7,
+          "hits": 60,
+          "hit_rate_pct": 54.1,
+          "wrong": 67
+        },
+        {
+          "threshold": 0.71,
+          "hits": 54,
+          "hit_rate_pct": 48.6,
+          "wrong": 64
+        },
+        {
+          "threshold": 0.72,
+          "hits": 53,
+          "hit_rate_pct": 47.7,
+          "wrong": 59
+        },
+        {
+          "threshold": 0.73,
+          "hits": 53,
+          "hit_rate_pct": 47.7,
+          "wrong": 56
+        },
+        {
+          "threshold": 0.74,
+          "hits": 41,
+          "hit_rate_pct": 36.9,
+          "wrong": 49
+        },
+        {
+          "threshold": 0.75,
+          "hits": 39,
+          "hit_rate_pct": 35.1,
+          "wrong": 48
+        },
+        {
+          "threshold": 0.76,
+          "hits": 33,
+          "hit_rate_pct": 29.7,
+          "wrong": 43
+        },
+        {
+          "threshold": 0.77,
+          "hits": 33,
+          "hit_rate_pct": 29.7,
+          "wrong": 39
+        },
+        {
+          "threshold": 0.78,
+          "hits": 31,
+          "hit_rate_pct": 27.9,
+          "wrong": 39
+        },
+        {
+          "threshold": 0.79,
+          "hits": 31,
+          "hit_rate_pct": 27.9,
+          "wrong": 39
+        },
+        {
+          "threshold": 0.8,
+          "hits": 28,
+          "hit_rate_pct": 25.2,
+          "wrong": 39
+        },
+        {
+          "threshold": 0.81,
+          "hits": 18,
+          "hit_rate_pct": 16.2,
+          "wrong": 29
+        },
+        {
+          "threshold": 0.82,
+          "hits": 16,
+          "hit_rate_pct": 14.4,
+          "wrong": 29
+        },
+        {
+          "threshold": 0.83,
+          "hits": 16,
+          "hit_rate_pct": 14.4,
+          "wrong": 29
+        },
+        {
+          "threshold": 0.84,
+          "hits": 12,
+          "hit_rate_pct": 10.8,
+          "wrong": 24
+        },
+        {
+          "threshold": 0.85,
+          "hits": 12,
+          "hit_rate_pct": 10.8,
+          "wrong": 22
+        },
+        {
+          "threshold": 0.86,
+          "hits": 11,
+          "hit_rate_pct": 9.9,
+          "wrong": 19
+        },
+        {
+          "threshold": 0.87,
+          "hits": 11,
+          "hit_rate_pct": 9.9,
+          "wrong": 15
+        },
+        {
+          "threshold": 0.88,
+          "hits": 6,
+          "hit_rate_pct": 5.4,
+          "wrong": 10
+        },
+        {
+          "threshold": 0.89,
+          "hits": 6,
+          "hit_rate_pct": 5.4,
+          "wrong": 10
+        },
+        {
+          "threshold": 0.9,
+          "hits": 6,
+          "hit_rate_pct": 5.4,
+          "wrong": 10
+        },
+        {
+          "threshold": 0.91,
+          "hits": 6,
+          "hit_rate_pct": 5.4,
+          "wrong": 10
+        },
+        {
+          "threshold": 0.92,
+          "hits": 6,
+          "hit_rate_pct": 5.4,
+          "wrong": 10
+        },
+        {
+          "threshold": 0.93,
+          "hits": 0,
+          "hit_rate_pct": 0.0,
+          "wrong": 7
+        },
+        {
+          "threshold": 0.94,
+          "hits": 0,
+          "hit_rate_pct": 0.0,
+          "wrong": 5
+        },
+        {
+          "threshold": 0.95,
+          "hits": 0,
+          "hit_rate_pct": 0.0,
+          "wrong": 5
+        },
+        {
+          "threshold": 0.96,
+          "hits": 0,
+          "hit_rate_pct": 0.0,
+          "wrong": 5
+        },
+        {
+          "threshold": 0.97,
+          "hits": 0,
+          "hit_rate_pct": 0.0,
+          "wrong": 5
+        },
+        {
+          "threshold": 0.98,
+          "hits": 0,
+          "hit_rate_pct": 0.0,
+          "wrong": 5
+        },
+        {
+          "threshold": 0.99,
+          "hits": 0,
+          "hit_rate_pct": 0.0,
+          "wrong": 5
+        }
+      ]
+    },
+    "unigrams + literal guard": {
+      "per_family_thresholds": {
+        "thresholds": {
+          "negation": 0.5
+        },
+        "exact_match_only": [
+          "unit conversion",
+          "translation",
+          "code",
+          "facts"
+        ],
+        "hit_rate_pct": 10.8,
+        "wrong": 0
+      },
+      "at_default_threshold_0.96": {
+        "threshold": 0.96,
+        "hits": 0,
+        "hit_rate_pct": 0.0,
+        "wrong": 5
+      },
+      "best_with_no_wrong_answers": null,
+      "per_family": {
+        "unit conversion": {
+          "at_0.96": {
+            "threshold": 0.96,
+            "hits": 0,
+            "hit_rate_pct": 0.0,
+            "wrong": 5
+          },
+          "best_with_no_wrong_answers": null
+        },
+        "translation": {
+          "at_0.96": {
+            "threshold": 0.96,
+            "hits": 0,
+            "hit_rate_pct": 0.0,
+            "wrong": 0
+          },
+          "best_with_no_wrong_answers": {
+            "threshold": 0.88,
+            "hits": 0,
+            "hit_rate_pct": 0.0,
+            "wrong": 0
+          }
+        },
+        "code": {
+          "at_0.96": {
+            "threshold": 0.96,
+            "hits": 0,
+            "hit_rate_pct": 0.0,
+            "wrong": 0
+          },
+          "best_with_no_wrong_answers": {
+            "threshold": 0.93,
+            "hits": 0,
+            "hit_rate_pct": 0.0,
+            "wrong": 0
+          }
+        },
+        "facts": {
+          "at_0.96": {
+            "threshold": 0.96,
+            "hits": 0,
+            "hit_rate_pct": 0.0,
+            "wrong": 0
+          },
+          "best_with_no_wrong_answers": {
+            "threshold": 0.88,
+            "hits": 0,
+            "hit_rate_pct": 0.0,
+            "wrong": 0
+          }
+        },
+        "negation": {
+          "at_0.96": {
+            "threshold": 0.96,
+            "hits": 0,
+            "hit_rate_pct": 0.0,
+            "wrong": 0
+          },
+          "best_with_no_wrong_answers": {
+            "threshold": 0.5,
+            "hits": 12,
+            "hit_rate_pct": 100.0,
+            "wrong": 0
+          }
+        }
+      },
+      "curve": [
+        {
+          "threshold": 0.5,
+          "hits": 97,
+          "hit_rate_pct": 87.4,
+          "wrong": 105
+        },
+        {
+          "threshold": 0.51,
+          "hits": 97,
+          "hit_rate_pct": 87.4,
+          "wrong": 102
+        },
+        {
+          "threshold": 0.52,
+          "hits": 97,
+          "hit_rate_pct": 87.4,
+          "wrong": 102
+        },
+        {
+          "threshold": 0.53,
+          "hits": 97,
+          "hit_rate_pct": 87.4,
+          "wrong": 102
+        },
+        {
+          "threshold": 0.54,
+          "hits": 96,
+          "hit_rate_pct": 86.5,
+          "wrong": 99
+        },
+        {
+          "threshold": 0.55,
+          "hits": 89,
+          "hit_rate_pct": 80.2,
+          "wrong": 89
+        },
+        {
+          "threshold": 0.56,
+          "hits": 89,
+          "hit_rate_pct": 80.2,
+          "wrong": 89
+        },
+        {
+          "threshold": 0.57,
+          "hits": 89,
+          "hit_rate_pct": 80.2,
+          "wrong": 86
+        },
+        {
+          "threshold": 0.58,
+          "hits": 89,
+          "hit_rate_pct": 80.2,
+          "wrong": 79
+        },
+        {
+          "threshold": 0.59,
+          "hits": 89,
+          "hit_rate_pct": 80.2,
+          "wrong": 77
+        },
+        {
+          "threshold": 0.6,
+          "hits": 89,
+          "hit_rate_pct": 80.2,
+          "wrong": 77
+        },
+        {
+          "threshold": 0.61,
+          "hits": 87,
+          "hit_rate_pct": 78.4,
+          "wrong": 67
+        },
+        {
+          "threshold": 0.62,
+          "hits": 87,
+          "hit_rate_pct": 78.4,
+          "wrong": 63
+        },
+        {
+          "threshold": 0.63,
+          "hits": 87,
+          "hit_rate_pct": 78.4,
+          "wrong": 58
+        },
+        {
+          "threshold": 0.64,
+          "hits": 79,
+          "hit_rate_pct": 71.2,
+          "wrong": 56
+        },
+        {
+          "threshold": 0.65,
+          "hits": 79,
+          "hit_rate_pct": 71.2,
+          "wrong": 56
+        },
+        {
+          "threshold": 0.66,
+          "hits": 78,
+          "hit_rate_pct": 70.3,
+          "wrong": 56
+        },
+        {
+          "threshold": 0.67,
+          "hits": 72,
+          "hit_rate_pct": 64.9,
+          "wrong": 56
+        },
+        {
+          "threshold": 0.68,
+          "hits": 60,
+          "hit_rate_pct": 54.1,
+          "wrong": 49
+        },
+        {
+          "threshold": 0.69,
+          "hits": 60,
+          "hit_rate_pct": 54.1,
+          "wrong": 49
+        },
+        {
+          "threshold": 0.7,
+          "hits": 60,
+          "hit_rate_pct": 54.1,
+          "wrong": 49
+        },
+        {
+          "threshold": 0.71,
+          "hits": 54,
+          "hit_rate_pct": 48.6,
+          "wrong": 46
+        },
+        {
+          "threshold": 0.72,
+          "hits": 53,
+          "hit_rate_pct": 47.7,
+          "wrong": 43
+        },
+        {
+          "threshold": 0.73,
+          "hits": 53,
+          "hit_rate_pct": 47.7,
+          "wrong": 40
+        },
+        {
+          "threshold": 0.74,
+          "hits": 41,
+          "hit_rate_pct": 36.9,
+          "wrong": 33
+        },
+        {
+          "threshold": 0.75,
+          "hits": 39,
+          "hit_rate_pct": 35.1,
+          "wrong": 32
+        },
+        {
+          "threshold": 0.76,
+          "hits": 33,
+          "hit_rate_pct": 29.7,
+          "wrong": 29
+        },
+        {
+          "threshold": 0.77,
+          "hits": 33,
+          "hit_rate_pct": 29.7,
+          "wrong": 27
+        },
+        {
+          "threshold": 0.78,
+          "hits": 31,
+          "hit_rate_pct": 27.9,
+          "wrong": 27
+        },
+        {
+          "threshold": 0.79,
+          "hits": 31,
+          "hit_rate_pct": 27.9,
+          "wrong": 27
+        },
+        {
+          "threshold": 0.8,
+          "hits": 28,
+          "hit_rate_pct": 25.2,
+          "wrong": 27
+        },
+        {
+          "threshold": 0.81,
+          "hits": 18,
+          "hit_rate_pct": 16.2,
+          "wrong": 25
+        },
+        {
+          "threshold": 0.82,
+          "hits": 16,
+          "hit_rate_pct": 14.4,
+          "wrong": 25
+        },
+        {
+          "threshold": 0.83,
+          "hits": 16,
+          "hit_rate_pct": 14.4,
+          "wrong": 25
+        },
+        {
+          "threshold": 0.84,
+          "hits": 12,
+          "hit_rate_pct": 10.8,
+          "wrong": 20
+        },
+        {
+          "threshold": 0.85,
+          "hits": 12,
+          "hit_rate_pct": 10.8,
+          "wrong": 20
+        },
+        {
+          "threshold": 0.86,
+          "hits": 11,
+          "hit_rate_pct": 9.9,
+          "wrong": 17
+        },
+        {
+          "threshold": 0.87,
+          "hits": 11,
+          "hit_rate_pct": 9.9,
+          "wrong": 13
+        },
+        {
+          "threshold": 0.88,
+          "hits": 6,
+          "hit_rate_pct": 5.4,
+          "wrong": 8
+        },
+        {
+          "threshold": 0.89,
+          "hits": 6,
+          "hit_rate_pct": 5.4,
+          "wrong": 8
+        },
+        {
+          "threshold": 0.9,
+          "hits": 6,
+          "hit_rate_pct": 5.4,
+          "wrong": 8
+        },
+        {
+          "threshold": 0.91,
+          "hits": 6,
+          "hit_rate_pct": 5.4,
+          "wrong": 8
+        },
+        {
+          "threshold": 0.92,
+          "hits": 6,
+          "hit_rate_pct": 5.4,
+          "wrong": 8
+        },
+        {
+          "threshold": 0.93,
+          "hits": 0,
+          "hit_rate_pct": 0.0,
+          "wrong": 5
+        },
+        {
+          "threshold": 0.94,
+          "hits": 0,
+          "hit_rate_pct": 0.0,
+          "wrong": 5
+        },
+        {
+          "threshold": 0.95,
+          "hits": 0,
+          "hit_rate_pct": 0.0,
+          "wrong": 5
+        },
+        {
+          "threshold": 0.96,
+          "hits": 0,
+          "hit_rate_pct": 0.0,
+          "wrong": 5
+        },
+        {
+          "threshold": 0.97,
+          "hits": 0,
+          "hit_rate_pct": 0.0,
+          "wrong": 5
+        },
+        {
+          "threshold": 0.98,
+          "hits": 0,
+          "hit_rate_pct": 0.0,
+          "wrong": 5
+        },
+        {
+          "threshold": 0.99,
+          "hits": 0,
+          "hit_rate_pct": 0.0,
+          "wrong": 5
+        }
+      ]
+    },
+    "uni+bigrams": {
+      "per_family_thresholds": {
+        "thresholds": {
+          "code": 0.88
+        },
+        "exact_match_only": [
+          "unit conversion",
+          "translation",
+          "facts",
+          "negation"
+        ],
+        "hit_rate_pct": 5.4,
+        "wrong": 0
+      },
+      "at_default_threshold_0.96": {
+        "threshold": 0.96,
+        "hits": 0,
+        "hit_rate_pct": 0.0,
+        "wrong": 0
+      },
+      "best_with_no_wrong_answers": {
+        "threshold": 0.89,
+        "hits": 6,
+        "hit_rate_pct": 5.4,
+        "wrong": 0
+      },
+      "per_family": {
+        "unit conversion": {
+          "at_0.96": {
+            "threshold": 0.96,
+            "hits": 0,
+            "hit_rate_pct": 0.0,
+            "wrong": 0
+          },
+          "best_with_no_wrong_answers": {
+            "threshold": 0.67,
+            "hits": 0,
+            "hit_rate_pct": 0.0,
+            "wrong": 0
+          }
+        },
+        "translation": {
+          "at_0.96": {
+            "threshold": 0.96,
+            "hits": 0,
+            "hit_rate_pct": 0.0,
+            "wrong": 0
+          },
+          "best_with_no_wrong_answers": {
+            "threshold": 0.89,
+            "hits": 0,
+            "hit_rate_pct": 0.0,
+            "wrong": 0
+          }
+        },
+        "code": {
+          "at_0.96": {
+            "threshold": 0.96,
+            "hits": 0,
+            "hit_rate_pct": 0.0,
+            "wrong": 0
+          },
+          "best_with_no_wrong_answers": {
+            "threshold": 0.88,
+            "hits": 6,
+            "hit_rate_pct": 33.3,
+            "wrong": 0
+          }
+        },
+        "facts": {
+          "at_0.96": {
+            "threshold": 0.96,
+            "hits": 0,
+            "hit_rate_pct": 0.0,
+            "wrong": 0
+          },
+          "best_with_no_wrong_answers": {
+            "threshold": 0.84,
+            "hits": 0,
+            "hit_rate_pct": 0.0,
+            "wrong": 0
+          }
+        },
+        "negation": {
+          "at_0.96": {
+            "threshold": 0.96,
+            "hits": 0,
+            "hit_rate_pct": 0.0,
+            "wrong": 0
+          },
+          "best_with_no_wrong_answers": {
+            "threshold": 0.86,
+            "hits": 0,
+            "hit_rate_pct": 0.0,
+            "wrong": 0
+          }
+        }
+      },
+      "curve": [
+        {
+          "threshold": 0.5,
+          "hits": 86,
+          "hit_rate_pct": 77.5,
+          "wrong": 80
+        },
+        {
+          "threshold": 0.51,
+          "hits": 70,
+          "hit_rate_pct": 63.1,
+          "wrong": 68
+        },
+        {
+          "threshold": 0.52,
+          "hits": 70,
+          "hit_rate_pct": 63.1,
+          "wrong": 67
+        },
+        {
+          "threshold": 0.53,
+          "hits": 69,
+          "hit_rate_pct": 62.2,
+          "wrong": 63
+        },
+        {
+          "threshold": 0.54,
+          "hits": 68,
+          "hit_rate_pct": 61.3,
+          "wrong": 61
+        },
+        {
+          "threshold": 0.55,
+          "hits": 68,
+          "hit_rate_pct": 61.3,
+          "wrong": 60
+        },
+        {
+          "threshold": 0.56,
+          "hits": 65,
+          "hit_rate_pct": 58.6,
+          "wrong": 60
+        },
+        {
+          "threshold": 0.57,
+          "hits": 65,
+          "hit_rate_pct": 58.6,
+          "wrong": 60
+        },
+        {
+          "threshold": 0.58,
+          "hits": 65,
+          "hit_rate_pct": 58.6,
+          "wrong": 60
+        },
+        {
+          "threshold": 0.59,
+          "hits": 61,
+          "hit_rate_pct": 55.0,
+          "wrong": 58
+        },
+        {
+          "threshold": 0.6,
+          "hits": 61,
+          "hit_rate_pct": 55.0,
+          "wrong": 58
+        },
+        {
+          "threshold": 0.61,
+          "hits": 48,
+          "hit_rate_pct": 43.2,
+          "wrong": 54
+        },
+        {
+          "threshold": 0.62,
+          "hits": 48,
+          "hit_rate_pct": 43.2,
+          "wrong": 51
+        },
+        {
+          "threshold": 0.63,
+          "hits": 47,
+          "hit_rate_pct": 42.3,
+          "wrong": 49
+        },
+        {
+          "threshold": 0.64,
+          "hits": 38,
+          "hit_rate_pct": 34.2,
+          "wrong": 49
+        },
+        {
+          "threshold": 0.65,
+          "hits": 38,
+          "hit_rate_pct": 34.2,
+          "wrong": 48
+        },
+        {
+          "threshold": 0.66,
+          "hits": 38,
+          "hit_rate_pct": 34.2,
+          "wrong": 45
+        },
+        {
+          "threshold": 0.67,
+          "hits": 36,
+          "hit_rate_pct": 32.4,
+          "wrong": 32
+        },
+        {
+          "threshold": 0.68,
+          "hits": 30,
+          "hit_rate_pct": 27.0,
+          "wrong": 30
+        },
+        {
+          "threshold": 0.69,
+          "hits": 26,
+          "hit_rate_pct": 23.4,
+          "wrong": 26
+        },
+        {
+          "threshold": 0.7,
+          "hits": 17,
+          "hit_rate_pct": 15.3,
+          "wrong": 26
+        },
+        {
+          "threshold": 0.71,
+          "hits": 13,
+          "hit_rate_pct": 11.7,
+          "wrong": 26
+        },
+        {
+          "threshold": 0.72,
+          "hits": 13,
+          "hit_rate_pct": 11.7,
+          "wrong": 26
+        },
+        {
+          "threshold": 0.73,
+          "hits": 12,
+          "hit_rate_pct": 10.8,
+          "wrong": 26
+        },
+        {
+          "threshold": 0.74,
+          "hits": 11,
+          "hit_rate_pct": 9.9,
+          "wrong": 24
+        },
+        {
+          "threshold": 0.75,
+          "hits": 10,
+          "hit_rate_pct": 9.0,
+          "wrong": 24
+        },
+        {
+          "threshold": 0.76,
+          "hits": 8,
+          "hit_rate_pct": 7.2,
+          "wrong": 24
+        },
+        {
+          "threshold": 0.77,
+          "hits": 8,
+          "hit_rate_pct": 7.2,
+          "wrong": 24
+        },
+        {
+          "threshold": 0.78,
+          "hits": 8,
+          "hit_rate_pct": 7.2,
+          "wrong": 22
+        },
+        {
+          "threshold": 0.79,
+          "hits": 6,
+          "hit_rate_pct": 5.4,
+          "wrong": 22
+        },
+        {
+          "threshold": 0.8,
+          "hits": 6,
+          "hit_rate_pct": 5.4,
+          "wrong": 22
+        },
+        {
+          "threshold": 0.81,
+          "hits": 6,
+          "hit_rate_pct": 5.4,
+          "wrong": 20
+        },
+        {
+          "threshold": 0.82,
+          "hits": 6,
+          "hit_rate_pct": 5.4,
+          "wrong": 17
+        },
+        {
+          "threshold": 0.83,
+          "hits": 6,
+          "hit_rate_pct": 5.4,
+          "wrong": 16
+        },
+        {
+          "threshold": 0.84,
+          "hits": 6,
+          "hit_rate_pct": 5.4,
+          "wrong": 10
+        },
+        {
+          "threshold": 0.85,
+          "hits": 6,
+          "hit_rate_pct": 5.4,
+          "wrong": 7
+        },
+        {
+          "threshold": 0.86,
+          "hits": 6,
+          "hit_rate_pct": 5.4,
+          "wrong": 5
+        },
+        {
+          "threshold": 0.87,
+          "hits": 6,
+          "hit_rate_pct": 5.4,
+          "wrong": 3
+        },
+        {
+          "threshold": 0.88,
+          "hits": 6,
+          "hit_rate_pct": 5.4,
+          "wrong": 2
+        },
+        {
+          "threshold": 0.89,
+          "hits": 6,
+          "hit_rate_pct": 5.4,
+          "wrong": 0
+        },
+        {
+          "threshold": 0.9,
+          "hits": 6,
+          "hit_rate_pct": 5.4,
+          "wrong": 0
+        },
+        {
+          "threshold": 0.91,
+          "hits": 6,
+          "hit_rate_pct": 5.4,
+          "wrong": 0
+        },
+        {
+          "threshold": 0.92,
+          "hits": 1,
+          "hit_rate_pct": 0.9,
+          "wrong": 0
+        },
+        {
+          "threshold": 0.93,
+          "hits": 0,
+          "hit_rate_pct": 0.0,
+          "wrong": 0
+        },
+        {
+          "threshold": 0.94,
+          "hits": 0,
+          "hit_rate_pct": 0.0,
+          "wrong": 0
+        },
+        {
+          "threshold": 0.95,
+          "hits": 0,
+          "hit_rate_pct": 0.0,
+          "wrong": 0
+        },
+        {
+          "threshold": 0.96,
+          "hits": 0,
+          "hit_rate_pct": 0.0,
+          "wrong": 0
+        },
+        {
+          "threshold": 0.97,
+          "hits": 0,
+          "hit_rate_pct": 0.0,
+          "wrong": 0
+        },
+        {
+          "threshold": 0.98,
+          "hits": 0,
+          "hit_rate_pct": 0.0,
+          "wrong": 0
+        },
+        {
+          "threshold": 0.99,
+          "hits": 0,
+          "hit_rate_pct": 0.0,
+          "wrong": 0
+        }
+      ]
+    },
+    "uni+bigrams + literal guard": {
+      "per_family_thresholds": {
+        "thresholds": {
+          "code": 0.88,
+          "negation": 0.5
+        },
+        "exact_match_only": [
+          "unit conversion",
+          "translation",
+          "facts"
+        ],
+        "hit_rate_pct": 15.3,
+        "wrong": 0
+      },
+      "at_default_threshold_0.96": {
+        "threshold": 0.96,
+        "hits": 0,
+        "hit_rate_pct": 0.0,
+        "wrong": 0
+      },
+      "best_with_no_wrong_answers": {
+        "threshold": 0.89,
+        "hits": 6,
+        "hit_rate_pct": 5.4,
+        "wrong": 0
+      },
+      "per_family": {
+        "unit conversion": {
+          "at_0.96": {
+            "threshold": 0.96,
+            "hits": 0,
+            "hit_rate_pct": 0.0,
+            "wrong": 0
+          },
+          "best_with_no_wrong_answers": {
+            "threshold": 0.67,
+            "hits": 0,
+            "hit_rate_pct": 0.0,
+            "wrong": 0
+          }
+        },
+        "translation": {
+          "at_0.96": {
+            "threshold": 0.96,
+            "hits": 0,
+            "hit_rate_pct": 0.0,
+            "wrong": 0
+          },
+          "best_with_no_wrong_answers": {
+            "threshold": 0.89,
+            "hits": 0,
+            "hit_rate_pct": 0.0,
+            "wrong": 0
+          }
+        },
+        "code": {
+          "at_0.96": {
+            "threshold": 0.96,
+            "hits": 0,
+            "hit_rate_pct": 0.0,
+            "wrong": 0
+          },
+          "best_with_no_wrong_answers": {
+            "threshold": 0.88,
+            "hits": 6,
+            "hit_rate_pct": 33.3,
+            "wrong": 0
+          }
+        },
+        "facts": {
+          "at_0.96": {
+            "threshold": 0.96,
+            "hits": 0,
+            "hit_rate_pct": 0.0,
+            "wrong": 0
+          },
+          "best_with_no_wrong_answers": {
+            "threshold": 0.84,
+            "hits": 0,
+            "hit_rate_pct": 0.0,
+            "wrong": 0
+          }
+        },
+        "negation": {
+          "at_0.96": {
+            "threshold": 0.96,
+            "hits": 0,
+            "hit_rate_pct": 0.0,
+            "wrong": 0
+          },
+          "best_with_no_wrong_answers": {
+            "threshold": 0.5,
+            "hits": 11,
+            "hit_rate_pct": 91.7,
+            "wrong": 0
+          }
+        }
+      },
+      "curve": [
+        {
+          "threshold": 0.5,
+          "hits": 86,
+          "hit_rate_pct": 77.5,
+          "wrong": 61
+        },
+        {
+          "threshold": 0.51,
+          "hits": 70,
+          "hit_rate_pct": 63.1,
+          "wrong": 49
+        },
+        {
+          "threshold": 0.52,
+          "hits": 70,
+          "hit_rate_pct": 63.1,
+          "wrong": 49
+        },
+        {
+          "threshold": 0.53,
+          "hits": 69,
+          "hit_rate_pct": 62.2,
+          "wrong": 45
+        },
+        {
+          "threshold": 0.54,
+          "hits": 68,
+          "hit_rate_pct": 61.3,
+          "wrong": 45
+        },
+        {
+          "threshold": 0.55,
+          "hits": 68,
+          "hit_rate_pct": 61.3,
+          "wrong": 44
+        },
+        {
+          "threshold": 0.56,
+          "hits": 65,
+          "hit_rate_pct": 58.6,
+          "wrong": 44
+        },
+        {
+          "threshold": 0.57,
+          "hits": 65,
+          "hit_rate_pct": 58.6,
+          "wrong": 44
+        },
+        {
+          "threshold": 0.58,
+          "hits": 65,
+          "hit_rate_pct": 58.6,
+          "wrong": 44
+        },
+        {
+          "threshold": 0.59,
+          "hits": 61,
+          "hit_rate_pct": 55.0,
+          "wrong": 42
+        },
+        {
+          "threshold": 0.6,
+          "hits": 61,
+          "hit_rate_pct": 55.0,
+          "wrong": 42
+        },
+        {
+          "threshold": 0.61,
+          "hits": 48,
+          "hit_rate_pct": 43.2,
+          "wrong": 40
+        },
+        {
+          "threshold": 0.62,
+          "hits": 48,
+          "hit_rate_pct": 43.2,
+          "wrong": 37
+        },
+        {
+          "threshold": 0.63,
+          "hits": 47,
+          "hit_rate_pct": 42.3,
+          "wrong": 35
+        },
+        {
+          "threshold": 0.64,
+          "hits": 38,
+          "hit_rate_pct": 34.2,
+          "wrong": 35
+        },
+        {
+          "threshold": 0.65,
+          "hits": 38,
+          "hit_rate_pct": 34.2,
+          "wrong": 34
+        },
+        {
+          "threshold": 0.66,
+          "hits": 38,
+          "hit_rate_pct": 34.2,
+          "wrong": 31
+        },
+        {
+          "threshold": 0.67,
+          "hits": 36,
+          "hit_rate_pct": 32.4,
+          "wrong": 26
+        },
+        {
+          "threshold": 0.68,
+          "hits": 30,
+          "hit_rate_pct": 27.0,
+          "wrong": 26
+        },
+        {
+          "threshold": 0.69,
+          "hits": 26,
+          "hit_rate_pct": 23.4,
+          "wrong": 22
+        },
+        {
+          "threshold": 0.7,
+          "hits": 17,
+          "hit_rate_pct": 15.3,
+          "wrong": 22
+        },
+        {
+          "threshold": 0.71,
+          "hits": 13,
+          "hit_rate_pct": 11.7,
+          "wrong": 22
+        },
+        {
+          "threshold": 0.72,
+          "hits": 13,
+          "hit_rate_pct": 11.7,
+          "wrong": 22
+        },
+        {
+          "threshold": 0.73,
+          "hits": 12,
+          "hit_rate_pct": 10.8,
+          "wrong": 22
+        },
+        {
+          "threshold": 0.74,
+          "hits": 11,
+          "hit_rate_pct": 9.9,
+          "wrong": 22
+        },
+        {
+          "threshold": 0.75,
+          "hits": 10,
+          "hit_rate_pct": 9.0,
+          "wrong": 22
+        },
+        {
+          "threshold": 0.76,
+          "hits": 8,
+          "hit_rate_pct": 7.2,
+          "wrong": 22
+        },
+        {
+          "threshold": 0.77,
+          "hits": 8,
+          "hit_rate_pct": 7.2,
+          "wrong": 22
+        },
+        {
+          "threshold": 0.78,
+          "hits": 8,
+          "hit_rate_pct": 7.2,
+          "wrong": 20
+        },
+        {
+          "threshold": 0.79,
+          "hits": 6,
+          "hit_rate_pct": 5.4,
+          "wrong": 20
+        },
+        {
+          "threshold": 0.8,
+          "hits": 6,
+          "hit_rate_pct": 5.4,
+          "wrong": 20
+        },
+        {
+          "threshold": 0.81,
+          "hits": 6,
+          "hit_rate_pct": 5.4,
+          "wrong": 18
+        },
+        {
+          "threshold": 0.82,
+          "hits": 6,
+          "hit_rate_pct": 5.4,
+          "wrong": 15
+        },
+        {
+          "threshold": 0.83,
+          "hits": 6,
+          "hit_rate_pct": 5.4,
+          "wrong": 14
+        },
+        {
+          "threshold": 0.84,
+          "hits": 6,
+          "hit_rate_pct": 5.4,
+          "wrong": 8
+        },
+        {
+          "threshold": 0.85,
+          "hits": 6,
+          "hit_rate_pct": 5.4,
+          "wrong": 5
+        },
+        {
+          "threshold": 0.86,
+          "hits": 6,
+          "hit_rate_pct": 5.4,
+          "wrong": 5
+        },
+        {
+          "threshold": 0.87,
+          "hits": 6,
+          "hit_rate_pct": 5.4,
+          "wrong": 3
+        },
+        {
+          "threshold": 0.88,
+          "hits": 6,
+          "hit_rate_pct": 5.4,
+          "wrong": 2
+        },
+        {
+          "threshold": 0.89,
+          "hits": 6,
+          "hit_rate_pct": 5.4,
+          "wrong": 0
+        },
+        {
+          "threshold": 0.9,
+          "hits": 6,
+          "hit_rate_pct": 5.4,
+          "wrong": 0
+        },
+        {
+          "threshold": 0.91,
+          "hits": 6,
+          "hit_rate_pct": 5.4,
+          "wrong": 0
+        },
+        {
+          "threshold": 0.92,
+          "hits": 1,
+          "hit_rate_pct": 0.9,
+          "wrong": 0
+        },
+        {
+          "threshold": 0.93,
+          "hits": 0,
+          "hit_rate_pct": 0.0,
+          "wrong": 0
+        },
+        {
+          "threshold": 0.94,
+          "hits": 0,
+          "hit_rate_pct": 0.0,
+          "wrong": 0
+        },
+        {
+          "threshold": 0.95,
+          "hits": 0,
+          "hit_rate_pct": 0.0,
+          "wrong": 0
+        },
+        {
+          "threshold": 0.96,
+          "hits": 0,
+          "hit_rate_pct": 0.0,
+          "wrong": 0
+        },
+        {
+          "threshold": 0.97,
+          "hits": 0,
+          "hit_rate_pct": 0.0,
+          "wrong": 0
+        },
+        {
+          "threshold": 0.98,
+          "hits": 0,
+          "hit_rate_pct": 0.0,
+          "wrong": 0
+        },
+        {
+          "threshold": 0.99,
+          "hits": 0,
+          "hit_rate_pct": 0.0,
+          "wrong": 0
+        }
+      ]
+    },
+    "MiniLM-L6": {
+      "per_family_thresholds": {
+        "thresholds": {
+          "translation": 0.9,
+          "code": 0.83,
+          "facts": 0.73
+        },
+        "exact_match_only": [
+          "unit conversion",
+          "negation"
+        ],
+        "hit_rate_pct": 56.8,
+        "wrong": 0
+      },
+      "at_default_threshold_0.96": {
+        "threshold": 0.96,
+        "hits": 46,
+        "hit_rate_pct": 41.4,
+        "wrong": 12
+      },
+      "best_with_no_wrong_answers": null,
+      "per_family": {
+        "unit conversion": {
+          "at_0.96": {
+            "threshold": 0.96,
+            "hits": 12,
+            "hit_rate_pct": 33.3,
+            "wrong": 10
+          },
+          "best_with_no_wrong_answers": null
+        },
+        "translation": {
+          "at_0.96": {
+            "threshold": 0.96,
+            "hits": 9,
+            "hit_rate_pct": 37.5,
+            "wrong": 0
+          },
+          "best_with_no_wrong_answers": {
+            "threshold": 0.9,
+            "hits": 24,
+            "hit_rate_pct": 100.0,
+            "wrong": 0
+          }
+        },
+        "code": {
+          "at_0.96": {
+            "threshold": 0.96,
+            "hits": 12,
+            "hit_rate_pct": 66.7,
+            "wrong": 0
+          },
+          "best_with_no_wrong_answers": {
+            "threshold": 0.83,
+            "hits": 18,
+            "hit_rate_pct": 100.0,
+            "wrong": 0
+          }
+        },
+        "facts": {
+          "at_0.96": {
+            "threshold": 0.96,
+            "hits": 7,
+            "hit_rate_pct": 33.3,
+            "wrong": 0
+          },
+          "best_with_no_wrong_answers": {
+            "threshold": 0.73,
+            "hits": 21,
+            "hit_rate_pct": 100.0,
+            "wrong": 0
+          }
+        },
+        "negation": {
+          "at_0.96": {
+            "threshold": 0.96,
+            "hits": 6,
+            "hit_rate_pct": 50.0,
+            "wrong": 2
+          },
+          "best_with_no_wrong_answers": {
+            "threshold": 0.97,
+            "hits": 0,
+            "hit_rate_pct": 0.0,
+            "wrong": 0
+          }
+        }
+      },
+      "curve": [
+        {
+          "threshold": 0.5,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 148
+        },
+        {
+          "threshold": 0.51,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 147
+        },
+        {
+          "threshold": 0.52,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 146
+        },
+        {
+          "threshold": 0.53,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 146
+        },
+        {
+          "threshold": 0.54,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 145
+        },
+        {
+          "threshold": 0.55,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 143
+        },
+        {
+          "threshold": 0.56,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 140
+        },
+        {
+          "threshold": 0.57,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 140
+        },
+        {
+          "threshold": 0.58,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 139
+        },
+        {
+          "threshold": 0.59,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 138
+        },
+        {
+          "threshold": 0.6,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 134
+        },
+        {
+          "threshold": 0.61,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 133
+        },
+        {
+          "threshold": 0.62,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 132
+        },
+        {
+          "threshold": 0.63,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 130
+        },
+        {
+          "threshold": 0.64,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 128
+        },
+        {
+          "threshold": 0.65,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 127
+        },
+        {
+          "threshold": 0.66,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 126
+        },
+        {
+          "threshold": 0.67,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 124
+        },
+        {
+          "threshold": 0.68,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 117
+        },
+        {
+          "threshold": 0.69,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 111
+        },
+        {
+          "threshold": 0.7,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 105
+        },
+        {
+          "threshold": 0.71,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 100
+        },
+        {
+          "threshold": 0.72,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 98
+        },
+        {
+          "threshold": 0.73,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 96
+        },
+        {
+          "threshold": 0.74,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 92
+        },
+        {
+          "threshold": 0.75,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 88
+        },
+        {
+          "threshold": 0.76,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 87
+        },
+        {
+          "threshold": 0.77,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 87
+        },
+        {
+          "threshold": 0.78,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 86
+        },
+        {
+          "threshold": 0.79,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 81
+        },
+        {
+          "threshold": 0.8,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 79
+        },
+        {
+          "threshold": 0.81,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 74
+        },
+        {
+          "threshold": 0.82,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 69
+        },
+        {
+          "threshold": 0.83,
+          "hits": 107,
+          "hit_rate_pct": 96.4,
+          "wrong": 60
+        },
+        {
+          "threshold": 0.84,
+          "hits": 106,
+          "hit_rate_pct": 95.5,
+          "wrong": 52
+        },
+        {
+          "threshold": 0.85,
+          "hits": 105,
+          "hit_rate_pct": 94.6,
+          "wrong": 47
+        },
+        {
+          "threshold": 0.86,
+          "hits": 102,
+          "hit_rate_pct": 91.9,
+          "wrong": 41
+        },
+        {
+          "threshold": 0.87,
+          "hits": 95,
+          "hit_rate_pct": 85.6,
+          "wrong": 37
+        },
+        {
+          "threshold": 0.88,
+          "hits": 92,
+          "hit_rate_pct": 82.9,
+          "wrong": 35
+        },
+        {
+          "threshold": 0.89,
+          "hits": 88,
+          "hit_rate_pct": 79.3,
+          "wrong": 29
+        },
+        {
+          "threshold": 0.9,
+          "hits": 75,
+          "hit_rate_pct": 67.6,
+          "wrong": 23
+        },
+        {
+          "threshold": 0.91,
+          "hits": 72,
+          "hit_rate_pct": 64.9,
+          "wrong": 21
+        },
+        {
+          "threshold": 0.92,
+          "hits": 72,
+          "hit_rate_pct": 64.9,
+          "wrong": 19
+        },
+        {
+          "threshold": 0.93,
+          "hits": 69,
+          "hit_rate_pct": 62.2,
+          "wrong": 19
+        },
+        {
+          "threshold": 0.94,
+          "hits": 61,
+          "hit_rate_pct": 55.0,
+          "wrong": 14
+        },
+        {
+          "threshold": 0.95,
+          "hits": 55,
+          "hit_rate_pct": 49.5,
+          "wrong": 12
+        },
+        {
+          "threshold": 0.96,
+          "hits": 46,
+          "hit_rate_pct": 41.4,
+          "wrong": 12
+        },
+        {
+          "threshold": 0.97,
+          "hits": 33,
+          "hit_rate_pct": 29.7,
+          "wrong": 7
+        },
+        {
+          "threshold": 0.98,
+          "hits": 19,
+          "hit_rate_pct": 17.1,
+          "wrong": 5
+        },
+        {
+          "threshold": 0.99,
+          "hits": 2,
+          "hit_rate_pct": 1.8,
+          "wrong": 2
+        }
+      ]
+    },
+    "MiniLM-L6 + literal guard": {
+      "per_family_thresholds": {
+        "thresholds": {
+          "translation": 0.9,
+          "code": 0.83,
+          "facts": 0.73,
+          "negation": 0.5
+        },
+        "exact_match_only": [
+          "unit conversion"
+        ],
+        "hit_rate_pct": 67.6,
+        "wrong": 0
+      },
+      "at_default_threshold_0.96": {
+        "threshold": 0.96,
+        "hits": 46,
+        "hit_rate_pct": 41.4,
+        "wrong": 10
+      },
+      "best_with_no_wrong_answers": null,
+      "per_family": {
+        "unit conversion": {
+          "at_0.96": {
+            "threshold": 0.96,
+            "hits": 12,
+            "hit_rate_pct": 33.3,
+            "wrong": 10
+          },
+          "best_with_no_wrong_answers": null
+        },
+        "translation": {
+          "at_0.96": {
+            "threshold": 0.96,
+            "hits": 9,
+            "hit_rate_pct": 37.5,
+            "wrong": 0
+          },
+          "best_with_no_wrong_answers": {
+            "threshold": 0.9,
+            "hits": 24,
+            "hit_rate_pct": 100.0,
+            "wrong": 0
+          }
+        },
+        "code": {
+          "at_0.96": {
+            "threshold": 0.96,
+            "hits": 12,
+            "hit_rate_pct": 66.7,
+            "wrong": 0
+          },
+          "best_with_no_wrong_answers": {
+            "threshold": 0.83,
+            "hits": 18,
+            "hit_rate_pct": 100.0,
+            "wrong": 0
+          }
+        },
+        "facts": {
+          "at_0.96": {
+            "threshold": 0.96,
+            "hits": 7,
+            "hit_rate_pct": 33.3,
+            "wrong": 0
+          },
+          "best_with_no_wrong_answers": {
+            "threshold": 0.73,
+            "hits": 21,
+            "hit_rate_pct": 100.0,
+            "wrong": 0
+          }
+        },
+        "negation": {
+          "at_0.96": {
+            "threshold": 0.96,
+            "hits": 6,
+            "hit_rate_pct": 50.0,
+            "wrong": 0
+          },
+          "best_with_no_wrong_answers": {
+            "threshold": 0.5,
+            "hits": 12,
+            "hit_rate_pct": 100.0,
+            "wrong": 0
+          }
+        }
+      },
+      "curve": [
+        {
+          "threshold": 0.5,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 107
+        },
+        {
+          "threshold": 0.51,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 105
+        },
+        {
+          "threshold": 0.52,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 103
+        },
+        {
+          "threshold": 0.53,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 100
+        },
+        {
+          "threshold": 0.54,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 97
+        },
+        {
+          "threshold": 0.55,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 95
+        },
+        {
+          "threshold": 0.56,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 92
+        },
+        {
+          "threshold": 0.57,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 92
+        },
+        {
+          "threshold": 0.58,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 91
+        },
+        {
+          "threshold": 0.59,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 90
+        },
+        {
+          "threshold": 0.6,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 86
+        },
+        {
+          "threshold": 0.61,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 85
+        },
+        {
+          "threshold": 0.62,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 84
+        },
+        {
+          "threshold": 0.63,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 82
+        },
+        {
+          "threshold": 0.64,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 80
+        },
+        {
+          "threshold": 0.65,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 79
+        },
+        {
+          "threshold": 0.66,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 78
+        },
+        {
+          "threshold": 0.67,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 77
+        },
+        {
+          "threshold": 0.68,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 74
+        },
+        {
+          "threshold": 0.69,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 73
+        },
+        {
+          "threshold": 0.7,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 69
+        },
+        {
+          "threshold": 0.71,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 67
+        },
+        {
+          "threshold": 0.72,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 65
+        },
+        {
+          "threshold": 0.73,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 63
+        },
+        {
+          "threshold": 0.74,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 60
+        },
+        {
+          "threshold": 0.75,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 56
+        },
+        {
+          "threshold": 0.76,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 55
+        },
+        {
+          "threshold": 0.77,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 55
+        },
+        {
+          "threshold": 0.78,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 54
+        },
+        {
+          "threshold": 0.79,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 49
+        },
+        {
+          "threshold": 0.8,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 47
+        },
+        {
+          "threshold": 0.81,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 43
+        },
+        {
+          "threshold": 0.82,
+          "hits": 109,
+          "hit_rate_pct": 98.2,
+          "wrong": 40
+        },
+        {
+          "threshold": 0.83,
+          "hits": 107,
+          "hit_rate_pct": 96.4,
+          "wrong": 35
+        },
+        {
+          "threshold": 0.84,
+          "hits": 106,
+          "hit_rate_pct": 95.5,
+          "wrong": 30
+        },
+        {
+          "threshold": 0.85,
+          "hits": 105,
+          "hit_rate_pct": 94.6,
+          "wrong": 28
+        },
+        {
+          "threshold": 0.86,
+          "hits": 102,
+          "hit_rate_pct": 91.9,
+          "wrong": 25
+        },
+        {
+          "threshold": 0.87,
+          "hits": 95,
+          "hit_rate_pct": 85.6,
+          "wrong": 22
+        },
+        {
+          "threshold": 0.88,
+          "hits": 92,
+          "hit_rate_pct": 82.9,
+          "wrong": 20
+        },
+        {
+          "threshold": 0.89,
+          "hits": 88,
+          "hit_rate_pct": 79.3,
+          "wrong": 15
+        },
+        {
+          "threshold": 0.9,
+          "hits": 75,
+          "hit_rate_pct": 67.6,
+          "wrong": 10
+        },
+        {
+          "threshold": 0.91,
+          "hits": 72,
+          "hit_rate_pct": 64.9,
+          "wrong": 10
+        },
+        {
+          "threshold": 0.92,
+          "hits": 72,
+          "hit_rate_pct": 64.9,
+          "wrong": 10
+        },
+        {
+          "threshold": 0.93,
+          "hits": 69,
+          "hit_rate_pct": 62.2,
+          "wrong": 10
+        },
+        {
+          "threshold": 0.94,
+          "hits": 61,
+          "hit_rate_pct": 55.0,
+          "wrong": 10
+        },
+        {
+          "threshold": 0.95,
+          "hits": 55,
+          "hit_rate_pct": 49.5,
+          "wrong": 10
+        },
+        {
+          "threshold": 0.96,
+          "hits": 46,
+          "hit_rate_pct": 41.4,
+          "wrong": 10
+        },
+        {
+          "threshold": 0.97,
+          "hits": 33,
+          "hit_rate_pct": 29.7,
+          "wrong": 7
+        },
+        {
+          "threshold": 0.98,
+          "hits": 19,
+          "hit_rate_pct": 17.1,
+          "wrong": 5
+        },
+        {
+          "threshold": 0.99,
+          "hits": 2,
+          "hit_rate_pct": 1.8,
+          "wrong": 2
+        }
+      ]
+    }
+  }
+}

@@ -60,7 +60,7 @@ class DynamicBatcher:
                     break
                 try:
                     batch.append(await asyncio.wait_for(self.queue.get(), timeout=remaining))
-                except TimeoutError:
+                except asyncio.TimeoutError:  # an alias of TimeoutError from 3.11
                     break
             started = time.perf_counter()
             try:
@@ -87,4 +87,3 @@ class DynamicBatcher:
             finally:
                 for _ in batch:
                     self.queue.task_done()
-

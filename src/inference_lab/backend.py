@@ -23,17 +23,24 @@ class DeterministicBackend:
 
 
 class OpenAICompatibleBackend:
-    """Adapter for vLLM, SGLang, Ollama proxies and hosted OpenAI-style endpoints."""
+    """Adapter for vLLM, SGLang, Ollama and other OpenAI-style ``/v1/chat/completions`` servers.
 
-    def __init__(self, base_url: str, model: str, api_key: str = "local") -> None:
+    A batch is sent as concurrent requests; the server's own scheduler (continuous
+    batching in vLLM and SGLang) decides how they share the GPU.
+    """
+
+    def __init__(self, base_url: str, model: str, api_key: str = "local", transport=None) -> None:
         self.base_url = base_url.rstrip("/")
         self.model = model
         self.api_key = api_key
+        self.transport = transport  # an httpx transport; tests pass httpx.MockTransport
+        self.batch_sizes: list[int] = []
 
     async def generate_batch(self, prompts: list[str], max_tokens: int) -> list[str]:
         import httpx
 
-        async with httpx.AsyncClient(timeout=120) as client:
+        self.batch_sizes.append(len(prompts))
+        async with httpx.AsyncClient(timeout=120, transport=self.transport) as client:
             responses = await asyncio.gather(
                 *[
                     client.post(
@@ -51,4 +58,3 @@ class OpenAICompatibleBackend:
         for response in responses:
             response.raise_for_status()
         return [response.json()["choices"][0]["message"]["content"] for response in responses]
-

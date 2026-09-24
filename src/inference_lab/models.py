@@ -16,6 +16,7 @@ class GenerationResponse:
     queue_ms: float
     inference_ms: float
     batch_size: int
+    coalesced: bool = False
 
 
 @dataclass(frozen=True)
@@ -28,4 +29,5 @@ class BenchmarkSummary:
     cache_hit_rate: float
     backend_batches: int
     mean_batch_size: float
-
+    coalesced_requests: int = 0
+    backend_generations: int = 0
