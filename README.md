@@ -26,10 +26,13 @@ request ─► semantic cache ─► in-flight map (coalesce identical prompts) 
 window. The backend is the deterministic stub (12 ms + 3 ms per item), so the counts are exact
 and the latencies describe the front end, not a model.
 
-| | Backend generations | Backend batches | Cache hits | Coalesced | p95 latency (stub) |
+| | Backend generations | Cache hits | Coalesced | Backend batches (typical) | p95 latency (stub, typical) |
 |---|---:|---:|---:|---:|---:|
-| cache + batcher | 16 | 2 × 8 | 80% | 0 | ~76 ms |
-| **+ single-flight coalescing** | **3** | 1 × 3 | 80% | 13 | ~31 ms |
+| cache + batcher | 16 | 80% | 0 | 2 × 8 | ~76 ms |
+| **+ single-flight coalescing** | **3** | 80% | 13 | 1 × 3 | ~31 ms |
+
+Generations, hits and coalesced requests are exact. Batch counts and latencies depend on how
+quickly the event loop fills the 6 ms window; a slow CI runner sometimes forms three batches.
 
 The first 16 requests all arrive before any answer is cached, so without coalescing they all go
 to the backend: 13 of those generations duplicate work already in flight. The in-flight map makes

@@ -11,12 +11,11 @@ from .benchmark import run_benchmark
 from .cache_eval import LEXICAL, evaluate, neural_configs
 from .simulate import sweep
 
+# Batch counts depend on how fast the event loop fills the 6 ms window, so they are left out.
 DETERMINISTIC_LOADTEST_FIELDS = (
     "requests",
     "concurrency",
     "cache_hit_rate",
-    "backend_batches",
-    "mean_batch_size",
     "coalesced_requests",
     "backend_generations",
 )

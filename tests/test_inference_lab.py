@@ -127,8 +127,9 @@ async def test_openai_backend_sends_one_request_per_prompt():
 async def test_loadtest_counts():
     without = await run_benchmark(80, 16, coalesce=False)
     with_ = await run_benchmark(80, 16, coalesce=True)
-    assert (without.backend_generations, without.backend_batches) == (16, 2)
-    assert (with_.backend_generations, with_.backend_batches, with_.coalesced_requests) == (3, 1, 13)
+    assert (without.backend_generations, without.coalesced_requests) == (16, 0)
+    assert (with_.backend_generations, with_.coalesced_requests) == (3, 13)
+    assert without.backend_batches >= 2 and with_.backend_batches >= 1  # batch counts depend on timing
     assert without.cache_hit_rate == with_.cache_hit_rate == 0.8
 
 
