@@ -18,6 +18,19 @@ request ─► semantic cache ─► in-flight map (coalesce identical prompts) 
             TTL · LRU · threshold · guard                                   max batch · max wait   vLLM / SGLang / Ollama / stub
 ```
 
+## Quick start
+
+```bash
+git clone https://github.com/asher0913/inference-lab && cd inference-lab
+python3 -m venv .venv && . .venv/bin/activate && pip install -e '.[dev]'
+inference-bench && inference-lab report --out runs/demo
+```
+
+This needs Python 3.10+ and no GPU or model server. The run takes well under a minute.
+`inference-bench` runs the load test against the deterministic stub backend. `inference-lab report`
+regenerates the three result files. CI runs the same commands on every push and checks the output
+against `results/`.
+
 ## Results
 
 ### Request coalescing: 16 backend generations become 3
@@ -101,6 +114,38 @@ Each point is 1,500 requests averaged over 3 seeds.
   in the scheduler. That is why this front end sends batches as concurrent requests and leaves
   scheduling to the server when the backend is vLLM or SGLang.
 
+## Evidence and CI coverage
+
+| Result | Kind of evidence | File | Rerun in CI? |
+|---|---|---|---|
+| Coalescing: 16 → 3 generations, 80% hits | measurement of this code against a deterministic stub backend | `results/loadtest.json` | Yes, the exact counts. Batch counts and latencies depend on timing and are not checked. |
+| Cache hit and wrong-answer rates, lexical embedders | labelled, templated prompt set (synthetic) | `results/cache_lexical.json` | Yes, every number |
+| Cache rows with MiniLM | same prompt set with a downloaded model | `results/cache_minilm.json` | No: they need the model download. CI checks that the file's lexical rows match. |
+| Continuous vs static batching | discrete-event simulation with an illustrative cost model | `results/batching.json` | Yes, every number |
+
+No number on this page is a GPU or real-model measurement.
+
+## Design trade-offs
+
+| Decision | Chosen | Alternative | Why |
+|---|---|---|---|
+| Duplicate suppression | single-flight in-flight map, exact prompt match | semantic matching of in-flight requests | Exact matching cannot return a wrong answer; semantic matching would inherit every cache failure shown above. |
+| Cache matching | per-family thresholds plus a literal guard; exact match for unsafe families | one global threshold | The labelled study shows no global threshold is both useful and safe. |
+| Batching | static batches handed to the backend as concurrent requests | re-implementing continuous batching in the front end | vLLM and SGLang already schedule per decode step, so the front end only needs to keep them busy. The simulation quantifies what static batching would cost. |
+| Backend | OpenAI-compatible HTTP adapter plus a deterministic stub | vendor SDKs | One harness covers vLLM, SGLang and Ollama, and the stub makes the counts exact in CI. |
+
+## Code map
+
+| File | What to look at |
+|---|---|
+| `src/inference_lab/service.py` | `InferenceService.generate`: cache lookup → in-flight map (coalescing) → batcher, with error propagation to waiters |
+| `src/inference_lab/batcher.py` | `DynamicBatcher`: max batch size and max wait, one backend call per batch |
+| `src/inference_lab/cache.py` | `SemanticCache`: TTL, LRU, threshold, per-family policy |
+| `src/inference_lab/embedding.py` | hashed lexical embedders, the MiniLM embedder and `literal_guard` |
+| `src/inference_lab/cache_eval.py` | the labelled paraphrase and near-miss evaluation |
+| `src/inference_lab/simulate.py` | discrete-event simulation of sequential, static and continuous batching |
+| `src/inference_lab/backend.py` | stub and OpenAI-compatible backends |
+
 ## Usage
 
 ```bash
@@ -153,6 +198,18 @@ warm-up, cache threshold and at least three repeated runs.
   and paraphrases no template anticipates.
 - The in-flight map coalesces exactly equal prompts (after case and whitespace normalisation),
   not semantically similar ones, which would carry the same risks as the cache.
+
+## Known issues
+
+These are open and scheduled to be fixed next:
+
+- **Cache and coalescing keys contain only the prompt.** Two requests with the same prompt but a
+  different `max_tokens` (or, once added, model, sampling parameters or tenant) share a cached answer
+  and an in-flight result. In a multi-tenant or multi-model deployment, the key must include all
+  of these.
+- **A batch runs with the largest `max_tokens` in it.** `DynamicBatcher` passes one limit for the
+  whole batch, so a short request can get a longer answer than it asked for. Per-request limits
+  should be sent to the backend.
 
 ## License
 
