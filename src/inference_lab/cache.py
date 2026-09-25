@@ -16,6 +16,7 @@ class CacheEntry:
     vector: list[float]
     value: str
     expires_at: float
+    namespace: str = ""
 
 
 class SemanticCache:
@@ -34,14 +35,18 @@ class SemanticCache:
         self.embedder = embedder or HashingEmbedder()
         self.guard = guard
         self.clock = clock
-        self._entries: OrderedDict[str, CacheEntry] = OrderedDict()
+        self._entries: OrderedDict[tuple[str, str], CacheEntry] = OrderedDict()
 
     @staticmethod
     def _similarity(left: list[float], right: list[float]) -> float:
         return sum(a * b for a, b in zip(left, right, strict=True))  # both are unit vectors
 
-    def lookup(self, prompt: str) -> tuple[CacheEntry | None, float]:
-        """Best live entry that passes the guard, and its similarity (hit or not)."""
+    def lookup(self, prompt: str, namespace: str = "") -> tuple[CacheEntry | None, float]:
+        """Best live entry in ``namespace`` that passes the guard, and its similarity (hit or not).
+
+        The namespace holds everything besides the prompt that changes the answer (tenant, model,
+        output limit), so an answer is never reused across those.
+        """
         now = self.clock()
         vector = self.embedder.encode(prompt)
         best: CacheEntry | None = None
@@ -49,6 +54,8 @@ class SemanticCache:
         for key in [k for k, e in self._entries.items() if e.expires_at <= now]:
             del self._entries[key]
         for entry in self._entries.values():
+            if entry.namespace != namespace:
+                continue
             if self.guard is not None and not self.guard(prompt, entry.prompt):
                 continue
             score = self._similarity(vector, entry.vector)
@@ -56,16 +63,19 @@ class SemanticCache:
                 best, best_score = entry, score
         return best, best_score
 
-    def get(self, prompt: str) -> str | None:
-        entry, score = self.lookup(prompt)
+    def get(self, prompt: str, namespace: str = "") -> str | None:
+        entry, score = self.lookup(prompt, namespace)
         if entry is None or score < self.threshold:
             return None
-        self._entries.move_to_end(entry.prompt)
+        self._entries.move_to_end((entry.namespace, entry.prompt))
         return entry.value
 
-    def put(self, prompt: str, value: str) -> None:
-        self._entries.pop(prompt, None)
-        self._entries[prompt] = CacheEntry(prompt, self.embedder.encode(prompt), value, self.clock() + self.ttl_seconds)
+    def put(self, prompt: str, value: str, namespace: str = "") -> None:
+        key = (namespace, prompt)
+        self._entries.pop(key, None)
+        self._entries[key] = CacheEntry(
+            prompt, self.embedder.encode(prompt), value, self.clock() + self.ttl_seconds, namespace
+        )
         while len(self._entries) > self.capacity:
             self._entries.popitem(last=False)
 

@@ -7,6 +7,8 @@ from dataclasses import dataclass
 class GenerationRequest:
     prompt: str
     max_tokens: int = 64
+    temperature: float = 0.0
+    tenant: str = "default"
 
 
 @dataclass(frozen=True)

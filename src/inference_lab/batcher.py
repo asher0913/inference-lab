@@ -14,6 +14,7 @@ class _Pending:
     max_tokens: int
     enqueued_at: float
     future: asyncio.Future[GenerationResponse]
+    temperature: float = 0.0
 
 
 class DynamicBatcher:
@@ -42,11 +43,11 @@ class DynamicBatcher:
                 pass
             self._worker = None
 
-    async def submit(self, prompt: str, max_tokens: int) -> GenerationResponse:
+    async def submit(self, prompt: str, max_tokens: int, temperature: float = 0.0) -> GenerationResponse:
         await self.start()
         loop = asyncio.get_running_loop()
         future: asyncio.Future[GenerationResponse] = loop.create_future()
-        await self.queue.put(_Pending(prompt, max_tokens, time.perf_counter(), future))
+        await self.queue.put(_Pending(prompt, max_tokens, time.perf_counter(), future, temperature))
         return await future
 
     async def _run(self) -> None:
@@ -66,7 +67,8 @@ class DynamicBatcher:
             try:
                 outputs = await self.backend.generate_batch(
                     [item.prompt for item in batch],
-                    max(item.max_tokens for item in batch),
+                    [item.max_tokens for item in batch],  # per request, not the batch maximum
+                    temperatures=[item.temperature for item in batch],
                 )
                 finished = time.perf_counter()
                 for item, output in zip(batch, outputs, strict=True):

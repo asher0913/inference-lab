@@ -5,7 +5,14 @@ from typing import Protocol
 
 
 class ModelBackend(Protocol):
-    async def generate_batch(self, prompts: list[str], max_tokens: int) -> list[str]: ...
+    async def generate_batch(
+        self, prompts: list[str], max_tokens: int | list[int], temperatures: list[float] | None = None
+    ) -> list[str]: ...
+
+
+def per_request(value, count: int) -> list:
+    """Expand one value for the whole batch into one value per request."""
+    return list(value) if isinstance(value, list | tuple) else [value] * count
 
 
 class DeterministicBackend:
@@ -16,10 +23,13 @@ class DeterministicBackend:
         self.per_item_ms = per_item_ms
         self.batch_sizes: list[int] = []
 
-    async def generate_batch(self, prompts: list[str], max_tokens: int) -> list[str]:
+    async def generate_batch(
+        self, prompts: list[str], max_tokens: int | list[int], temperatures: list[float] | None = None
+    ) -> list[str]:
         self.batch_sizes.append(len(prompts))
         await asyncio.sleep((self.base_latency_ms + self.per_item_ms * len(prompts)) / 1000)
-        return [f"answer:{prompt[:max_tokens]}" for prompt in prompts]
+        limits = per_request(max_tokens, len(prompts))
+        return [f"answer:{prompt[:limit]}" for prompt, limit in zip(prompts, limits, strict=True)]
 
 
 class OpenAICompatibleBackend:
@@ -36,10 +46,14 @@ class OpenAICompatibleBackend:
         self.transport = transport  # an httpx transport; tests pass httpx.MockTransport
         self.batch_sizes: list[int] = []
 
-    async def generate_batch(self, prompts: list[str], max_tokens: int) -> list[str]:
+    async def generate_batch(
+        self, prompts: list[str], max_tokens: int | list[int], temperatures: list[float] | None = None
+    ) -> list[str]:
         import httpx
 
         self.batch_sizes.append(len(prompts))
+        limits = per_request(max_tokens, len(prompts))
+        temps = per_request(0.0 if temperatures is None else temperatures, len(prompts))
         async with httpx.AsyncClient(timeout=120, transport=self.transport) as client:
             responses = await asyncio.gather(
                 *[
@@ -49,10 +63,11 @@ class OpenAICompatibleBackend:
                         json={
                             "model": self.model,
                             "messages": [{"role": "user", "content": prompt}],
-                            "max_tokens": max_tokens,
+                            "max_tokens": limit,
+                            "temperature": temperature,
                         },
                     )
-                    for prompt in prompts
+                    for prompt, limit, temperature in zip(prompts, limits, temps, strict=True)
                 ]
             )
         for response in responses:

@@ -178,7 +178,7 @@ warm-up, cache threshold and at least three repeated runs.
 
 ## Tests
 
-`pytest -q` runs 14 tests:
+`pytest -q` runs 17 tests:
 
 - batching combines concurrent requests, the cache skips the backend on a repeat, and a burst of
   identical prompts costs one generation (sixteen without coalescing);
@@ -199,17 +199,19 @@ warm-up, cache threshold and at least three repeated runs.
 - The in-flight map coalesces exactly equal prompts (after case and whitespace normalisation),
   not semantically similar ones, which would carry the same risks as the cache.
 
-## Known issues
+## Fixed issues
 
-These are open and scheduled to be fixed next:
+- **Cache and coalescing keys used to contain only the prompt.** Both are now namespaced by tenant,
+  model and `max_tokens`, so an answer is never reused across them. Sampled requests
+  (temperature > 0) skip the cache and coalescing entirely. The HTTP API takes the tenant from an
+  `x-tenant` header, which is meant to be set by an authenticating gateway in front of the service.
+- **A batch used to run with the largest `max_tokens` in it.** The batcher now passes each
+  request's own limit and temperature to the backend.
 
-- **Cache and coalescing keys contain only the prompt.** Two requests with the same prompt but a
-  different `max_tokens` (or, once added, model, sampling parameters or tenant) share a cached answer
-  and an in-flight result. In a multi-tenant or multi-model deployment, the key must include all
-  of these.
-- **A batch runs with the largest `max_tokens` in it.** `DynamicBatcher` passes one limit for the
-  whole batch, so a short request can get a longer answer than it asked for. Per-request limits
-  should be sent to the backend.
+Tests: `test_answers_are_not_shared_across_output_limits_or_tenants`,
+`test_identical_prompts_with_different_limits_are_not_coalesced`,
+`test_sampled_requests_bypass_cache_and_coalescing`, and the per-request body check in
+`test_openai_backend_sends_one_request_per_prompt`.
 
 ## License
 

@@ -45,7 +45,7 @@ async def test_identical_burst_is_coalesced(coalesce, generations):
 
 async def test_coalesced_waiters_see_the_leaders_error():
     class Failing(DeterministicBackend):
-        async def generate_batch(self, prompts, max_tokens):
+        async def generate_batch(self, prompts, max_tokens, temperatures=None):
             await asyncio.sleep(0.005)
             raise RuntimeError("backend down")
 
@@ -55,6 +55,43 @@ async def test_coalesced_waiters_see_the_leaders_error():
     await service.close()
     assert all(isinstance(r, RuntimeError) for r in results)
     assert not service._inflight
+
+
+async def test_answers_are_not_shared_across_output_limits_or_tenants():
+    backend = DeterministicBackend(base_latency_ms=1, per_item_ms=0)
+    service = InferenceService(backend)
+    short = await service.generate(GenerationRequest("explain retrieval", max_tokens=4))
+    long = await service.generate(GenerationRequest("explain retrieval", max_tokens=64))
+    other_tenant = await service.generate(GenerationRequest("explain retrieval", max_tokens=64, tenant="b"))
+    repeat = await service.generate(GenerationRequest("explain retrieval", max_tokens=64))
+    await service.close()
+    assert (short.text, long.text) == ("answer:expl", "answer:explain retrieval")
+    assert not long.cached and not other_tenant.cached and repeat.cached
+    assert sum(backend.batch_sizes) == 3
+
+
+async def test_identical_prompts_with_different_limits_are_not_coalesced():
+    backend = DeterministicBackend(base_latency_ms=5, per_item_ms=0)
+    service = InferenceService(backend, max_batch_size=8, max_wait_ms=5)
+    responses = await asyncio.gather(
+        service.generate(GenerationRequest("same prompt", max_tokens=4)),
+        service.generate(GenerationRequest("same prompt", max_tokens=64)),
+    )
+    await service.close()
+    assert [r.text for r in responses] == ["answer:same", "answer:same prompt"]
+    assert not any(r.coalesced for r in responses)
+
+
+async def test_sampled_requests_bypass_cache_and_coalescing():
+    backend = DeterministicBackend(base_latency_ms=5, per_item_ms=0)
+    service = InferenceService(backend, max_batch_size=8, max_wait_ms=2)
+    responses = await asyncio.gather(
+        *(service.generate(GenerationRequest("tell a story", temperature=0.8)) for _ in range(4))
+    )
+    again = await service.generate(GenerationRequest("tell a story", temperature=0.8))
+    await service.close()
+    assert sum(backend.batch_sizes) == 5
+    assert not any(r.cached or r.coalesced for r in [*responses, again])
 
 
 def test_cache_ttl_and_lru():
@@ -122,6 +159,11 @@ async def test_openai_backend_sends_one_request_per_prompt():
     out = await backend.generate_batch(["a", "b", "c"], 16)
     assert len(out) == 3 and len(seen) == 3 and backend.batch_sizes == [3]
     assert all('"max_tokens":16' in body.replace(" ", "") for body in seen)
+    seen.clear()
+    await backend.generate_batch(["a", "b"], [5, 50], temperatures=[0.0, 0.7])
+    bodies = sorted(body.replace(" ", "") for body in seen)
+    assert any('"max_tokens":5,' in b and '"temperature":0.0' in b for b in bodies)
+    assert any('"max_tokens":50,' in b and '"temperature":0.7' in b for b in bodies)
 
 
 async def test_loadtest_counts():

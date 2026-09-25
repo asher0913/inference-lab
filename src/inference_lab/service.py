@@ -12,12 +12,21 @@ def _key(prompt: str) -> str:
     return " ".join(prompt.lower().split())
 
 
+def _namespace(request: GenerationRequest, model: str) -> str:
+    """Everything besides the prompt that changes the answer. Answers are never shared across it."""
+    return f"{request.tenant}\x1f{model}\x1f{request.max_tokens}"
+
+
 class InferenceService:
     """Semantic cache, then request coalescing, then the dynamic batcher.
 
     Coalescing (single-flight): while a prompt is being generated, identical
     prompts wait for that result instead of going to the backend again. Without
     it, a burst of identical requests all miss the still-empty cache.
+
+    Both are keyed on the tenant, the model and the output limit as well as the
+    prompt, and both are skipped for sampled requests (temperature > 0), whose
+    answers are not meant to be identical.
     """
 
     def __init__(
@@ -29,17 +38,22 @@ class InferenceService:
         coalesce: bool = True,
     ) -> None:
         self.batcher = DynamicBatcher(backend, max_batch_size, max_wait_ms)
+        self.model = getattr(backend, "model", type(backend).__name__)
         self.cache = cache or SemanticCache()
         self.coalesce = coalesce
         self._inflight: dict[str, asyncio.Future[GenerationResponse]] = {}
         self.stats = {"cache_hits": 0, "coalesced": 0, "generated": 0}
 
     async def generate(self, request: GenerationRequest) -> GenerationResponse:
-        cached = self.cache.get(request.prompt)
+        if request.temperature > 0:
+            self.stats["generated"] += 1
+            return await self.batcher.submit(request.prompt, request.max_tokens, request.temperature)
+        namespace = _namespace(request, self.model)
+        cached = self.cache.get(request.prompt, namespace)
         if cached is not None:
             self.stats["cache_hits"] += 1
             return GenerationResponse(text=cached, cached=True, queue_ms=0.0, inference_ms=0.0, batch_size=0)
-        key = _key(request.prompt)
+        key = f"{namespace}\x1f{_key(request.prompt)}"
         if self.coalesce and key in self._inflight:
             self.stats["coalesced"] += 1
             leader = await asyncio.shield(self._inflight[key])
@@ -50,7 +64,7 @@ class InferenceService:
         try:
             self.stats["generated"] += 1
             response = await self.batcher.submit(request.prompt, request.max_tokens)
-            self.cache.put(request.prompt, response.text)
+            self.cache.put(request.prompt, response.text, namespace)
             future.set_result(response)
             return response
         except BaseException as error:
