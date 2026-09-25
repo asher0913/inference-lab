@@ -130,7 +130,7 @@ No number on this page is a GPU or real-model measurement.
 | Decision | Chosen | Alternative | Why |
 |---|---|---|---|
 | Duplicate suppression | single-flight in-flight map, exact prompt match | semantic matching of in-flight requests | Exact matching cannot return a wrong answer; semantic matching would inherit every cache failure shown above. |
-| Cache matching | per-family thresholds plus a literal guard; exact match for unsafe families | one global threshold | The labelled study shows no global threshold is both useful and safe. |
+| Cache matching | similarity threshold plus a literal guard, with the threshold set per prompt family (one `SemanticCache` per family, exact match for unsafe families) | one global threshold | The labelled study shows that no global threshold is both useful and safe. |
 | Batching | static batches handed to the backend as concurrent requests | re-implementing continuous batching in the front end | vLLM and SGLang already schedule per decode step, so the front end only needs to keep them busy. The simulation quantifies what static batching would cost. |
 | Backend | OpenAI-compatible HTTP adapter plus a deterministic stub | vendor SDKs | One harness covers vLLM, SGLang and Ollama, and the stub makes the counts exact in CI. |
 
@@ -139,10 +139,10 @@ No number on this page is a GPU or real-model measurement.
 | File | What to look at |
 |---|---|
 | `src/inference_lab/service.py` | `InferenceService.generate`: cache lookup → in-flight map (coalescing) → batcher, with error propagation to waiters |
-| `src/inference_lab/batcher.py` | `DynamicBatcher`: max batch size and max wait, one backend call per batch |
-| `src/inference_lab/cache.py` | `SemanticCache`: TTL, LRU, threshold, per-family policy |
+| `src/inference_lab/batcher.py` | `DynamicBatcher.submit` and `_run`: max batch size and max wait, one backend call per batch |
+| `src/inference_lab/cache.py` | `SemanticCache`: TTL, LRU, similarity threshold and an optional guard |
 | `src/inference_lab/embedding.py` | hashed lexical embedders, the MiniLM embedder and `literal_guard` |
-| `src/inference_lab/cache_eval.py` | the labelled paraphrase and near-miss evaluation |
+| `src/inference_lab/cache_eval.py` | the labelled paraphrase and near-miss evaluation, including the per-family threshold policy |
 | `src/inference_lab/simulate.py` | discrete-event simulation of sequential, static and continuous batching |
 | `src/inference_lab/backend.py` | stub and OpenAI-compatible backends |
 
